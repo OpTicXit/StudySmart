@@ -1,0 +1,45 @@
+# © 2026 Miguel Ángel Martínez. Todos los derechos reservados.
+# Al subir una etiqueta vX.Y.Z (publicar.ps1 lo hace), construye el instalador y publica la release
+# con las novedades de CHANGELOG.md. La app instalada la detecta con "Buscar actualizaciones".
+name: Publicar versión
+
+on:
+  push:
+    tags: ["v*.*.*"]
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.13"
+
+      - name: Comprobar versión y novedades
+        shell: pwsh
+        run: python src/version.py --notas "${{ github.ref_name }}" | Out-File notas.md -Encoding utf8
+
+      - name: Instalar dependencias e Inno Setup
+        shell: pwsh
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements-app.txt
+          choco install innosetup -y --no-progress
+
+      - name: Construir el ejecutable y el instalador
+        shell: pwsh
+        run: ./build.ps1 -Python python
+
+      - name: Publicar la release
+        shell: pwsh
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          $v = "${{ github.ref_name }}".TrimStart("v")
+          gh release create "${{ github.ref_name }}" "dist/StudySmart-Setup-$v.exe" `
+            --title "StudySmart $v" --notes-file notas.md

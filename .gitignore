@@ -1,0 +1,20 @@
+# entorno y compilación
+.venv/
+__pycache__/
+*.pyc
+build/
+dist/
+*.spec
+
+# datos personales y estado local (nunca se suben)
+data/raw/registros_personales.csv
+data/raw/estado.json
+data/raw/logs/
+
+# archivos temporales de Office y del editor
+~$*
+.claude/
+.ipynb_checkpoints/
+
+# material del curso que no es del autor
+reports/Guia_Informe_Mineria_de_Datos_StudySmart.docx

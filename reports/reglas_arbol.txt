@@ -1,0 +1,58 @@
+Reglas del árbol de decisión (class_weight=balanced; weights = [sin riesgo, riesgo] ponderados)
+Hiperparámetros: {'clf__criterion': 'gini', 'clf__max_depth': 4, 'clf__min_samples_leaf': 50}
+
+|--- promedio_cortes <= 3.31
+|   |--- promedio_cortes <= 2.91
+|   |   |--- asignaturas_reprobadas_previas <= 2.50
+|   |   |   |--- promedio_cortes <= 2.62
+|   |   |   |   |--- weights: [29.11, 238.29] class: 1
+|   |   |   |--- promedio_cortes >  2.62
+|   |   |   |   |--- weights: [73.40, 178.72] class: 1
+|   |   |--- asignaturas_reprobadas_previas >  2.50
+|   |   |   |--- ejercicios_correctos_pct <= 32.00
+|   |   |   |   |--- weights: [12.02, 345.53] class: 1
+|   |   |   |--- ejercicios_correctos_pct >  32.00
+|   |   |   |   |--- weights: [64.54, 569.52] class: 1
+|   |--- promedio_cortes >  2.91
+|   |   |--- asignaturas_reprobadas_previas <= 3.50
+|   |   |   |--- ejercicios_correctos_pct <= 44.20
+|   |   |   |   |--- weights: [89.22, 207.32] class: 1
+|   |   |   |--- ejercicios_correctos_pct >  44.20
+|   |   |   |   |--- weights: [198.06, 181.10] class: 0
+|   |   |--- asignaturas_reprobadas_previas >  3.50
+|   |   |   |--- ejercicios_correctos_pct <= 48.00
+|   |   |   |   |--- weights: [20.25, 133.44] class: 1
+|   |   |   |--- ejercicios_correctos_pct >  48.00
+|   |   |   |   |--- weights: [20.25, 45.28] class: 1
+|--- promedio_cortes >  3.31
+|   |--- promedio_cortes <= 3.70
+|   |   |--- ejercicios_correctos_pct <= 36.35
+|   |   |   |--- actividades_completadas_pct <= 78.15
+|   |   |   |   |--- weights: [17.72, 69.11] class: 1
+|   |   |   |--- actividades_completadas_pct >  78.15
+|   |   |   |   |--- weights: [27.21, 28.60] class: 1
+|   |   |--- ejercicios_correctos_pct >  36.35
+|   |   |   |--- ejercicios_correctos_pct <= 65.05
+|   |   |   |   |--- weights: [332.20, 219.23] class: 0
+|   |   |   |--- ejercicios_correctos_pct >  65.05
+|   |   |   |   |--- weights: [105.67, 16.68] class: 0
+|   |--- promedio_cortes >  3.70
+|   |   |--- asignaturas_reprobadas_previas <= 2.50
+|   |   |   |--- ejercicios_correctos_pct <= 50.85
+|   |   |   |   |--- weights: [273.99, 76.25] class: 0
+|   |   |   |--- ejercicios_correctos_pct >  50.85
+|   |   |   |   |--- weights: [1089.00, 52.42] class: 0
+|   |   |--- asignaturas_reprobadas_previas >  2.50
+|   |   |   |--- weights: [49.36, 40.51] class: 0
+
+
+Reglas SI-ENTONCES que predicen RIESGO:
+- SI promedio_cortes <= 2.62 Y asignaturas_reprobadas_previas <= 2.50 ENTONCES riesgo  (n=146, peso riesgo=0.89)
+- SI 2.62 < promedio_cortes <= 2.91 Y asignaturas_reprobadas_previas <= 2.50 ENTONCES riesgo  (n=191, peso riesgo=0.71)
+- SI promedio_cortes <= 2.91 Y asignaturas_reprobadas_previas > 2.50 Y ejercicios_correctos_pct <= 32.00 ENTONCES riesgo  (n=164, peso riesgo=0.97)
+- SI promedio_cortes <= 2.91 Y asignaturas_reprobadas_previas > 2.50 Y ejercicios_correctos_pct > 32.00 ENTONCES riesgo  (n=341, peso riesgo=0.90)
+- SI 2.91 < promedio_cortes <= 3.31 Y asignaturas_reprobadas_previas <= 3.50 Y ejercicios_correctos_pct <= 44.20 ENTONCES riesgo  (n=228, peso riesgo=0.70)
+- SI 2.91 < promedio_cortes <= 3.31 Y asignaturas_reprobadas_previas > 3.50 Y ejercicios_correctos_pct <= 48.00 ENTONCES riesgo  (n=88, peso riesgo=0.87)
+- SI 2.91 < promedio_cortes <= 3.31 Y asignaturas_reprobadas_previas > 3.50 Y ejercicios_correctos_pct > 48.00 ENTONCES riesgo  (n=51, peso riesgo=0.69)
+- SI 3.31 < promedio_cortes <= 3.70 Y ejercicios_correctos_pct <= 36.35 Y actividades_completadas_pct <= 78.15 ENTONCES riesgo  (n=57, peso riesgo=0.80)
+- SI 3.31 < promedio_cortes <= 3.70 Y ejercicios_correctos_pct <= 36.35 Y actividades_completadas_pct > 78.15 ENTONCES riesgo  (n=55, peso riesgo=0.51)

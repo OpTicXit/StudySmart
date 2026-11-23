@@ -1,0 +1,42 @@
+LICENCIA DE USO DE STUDYSMART
+
+Copyright © 2026 Miguel Ángel Martínez. Todos los derechos reservados.
+
+StudySmart (el "Software") comprende el código fuente, el ejecutable, el instalador, los
+modelos entrenados, la documentación y los diseños publicados en
+https://github.com/OpTicXit/StudySmart. El Software es propiedad exclusiva de
+Miguel Ángel Martínez (el "Autor") y está protegido por las leyes de derechos de autor.
+
+1. PERMISO DE USO
+   Se concede a cualquier persona, de forma gratuita, no exclusiva y revocable, el permiso para
+   descargar, instalar y usar el Software para fines personales, educativos o académicos.
+
+2. RESTRICCIONES
+   Sin autorización previa y por escrito del Autor, no está permitido:
+   a) modificar, adaptar, traducir o crear obras derivadas del Software;
+   b) copiar, redistribuir, publicar, sublicenciar, alquilar o vender el Software o partes de él;
+   c) usar el Software, o servicios basados en él, con fines comerciales;
+   d) eliminar o alterar los avisos de autoría, de derechos de autor o esta licencia;
+   e) presentar el Software, o partes de él, como obra propia.
+   Ver el código fuente en GitHub no concede ningún derecho distinto de los descritos aquí.
+
+3. ACTUALIZACIONES
+   El Software puede consultar GitHub para buscar versiones nuevas e instalarlas cuando el
+   usuario lo solicite. Esta licencia se aplica también a dichas actualizaciones.
+
+4. COMPONENTES DE TERCEROS
+   El Software incluye bibliotecas de terceros (por ejemplo Python, Streamlit, scikit-learn,
+   pandas, NumPy y pywebview) y conjuntos de datos públicos del UCI Machine Learning Repository.
+   Esos componentes se rigen por sus propias licencias, que prevalecen sobre esta en lo que
+   respecta a ellos.
+
+5. AUSENCIA DE GARANTÍA
+   El Software se entrega "tal cual", sin garantías de ningún tipo. Sus predicciones provienen de
+   un modelo entrenado con datos simulados y son un apoyo orientativo, no una evaluación oficial.
+   En ningún caso el Autor será responsable de daños o decisiones derivados del uso del Software.
+
+6. TERMINACIÓN
+   El incumplimiento de esta licencia revoca automáticamente el permiso de uso.
+
+Para solicitar permisos adicionales, abre un "issue" en
+https://github.com/OpTicXit/StudySmart/issues.

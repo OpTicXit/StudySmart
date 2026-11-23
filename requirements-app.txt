@@ -1,0 +1,9 @@
+# Dependencias exactas para construir StudySmart.exe (el modelo .joblib se entrenó con estas versiones).
+numpy==2.5.5
+pandas==3.1.1
+scipy==1.18.1
+scikit-learn==1.9.1
+joblib==1.6.0
+streamlit==1.67.0
+pywebview==6.2.1
+pyinstaller==6.22.3

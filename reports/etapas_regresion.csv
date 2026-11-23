@@ -1,0 +1,16 @@
+etapa,predice,conjunto,MAE,R2
+0,nota_final,CV train,0.4287,0.5275
+0,nota_final,test,0.4241,0.5235
+0,nota_final,test · regla ingenua,0.616,-0.0006
+0,nota_corte1,CV train,0.477,0.4429
+0,nota_corte1,test,0.4628,0.4424
+0,nota_corte1,test · regla ingenua,0.6275,-0.0003
+1,nota_final,CV train,0.421,0.5434
+1,nota_final,test,0.4218,0.5317
+1,nota_final,test · regla ingenua,0.568,0.1065
+1,nota_corte2,CV train,0.5128,0.4587
+1,nota_corte2,test,0.4902,0.4512
+1,nota_corte2,test · regla ingenua,0.6113,0.1372
+2,nota_final,CV train,0.405,0.5776
+2,nota_final,test,0.4096,0.5542
+2,nota_final,test · regla ingenua,0.4711,0.3981

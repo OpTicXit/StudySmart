@@ -1,0 +1,8 @@
+{
+  "tipo": "hibrido",
+  "params": {
+    "clf__max_depth": 10,
+    "clf__max_features": "sqrt",
+    "clf__min_samples_leaf": 20
+  }
+}
